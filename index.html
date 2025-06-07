@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>En No Ka - Japanese Cuisine</title>
+  <style>
+    :root {
+      --clr-bg: #ffffff;
+      --clr-text-primary: #4b2c2c;
+      --clr-text-secondary: #6b7280;
+      --clr-accent: #f2a6b3;
+      --clr-accent-dark: #c05668;
+      --clr-overlay: rgba(242, 166, 179, 0.55);
+      --border-radius: 0.75rem;
+      --transition-speed: 0.3s;
+      --max-width: 1200px;
+
+      --font-headline: 'Noto Sans JP', Verdana, Geneva, Tahoma, sans-serif;
+      --font-body: 'Noto Sans JP', Verdana, Geneva, Tahoma, sans-serif;
+      --font-logo-kanji: 'Sawarabi Mincho', serif;
+      --font-logo-english: 'Noto Sans JP', Arial, sans-serif;
+      --font-qr-jp: 'Kosugi Maru', sans-serif;
+      --font-qr-en: 'Inter', system-ui, sans-serif;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter&family=Kosugi+Maru&family=Noto+Sans+JP:wght@400;700&family=Sawarabi+Mincho&display=swap');
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 1.6;
+      background: var(--clr-bg);
+      color: var(--clr-text-secondary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      scroll-behavior: smooth;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    a:focus-visible {
+      outline: 2px solid var(--clr-accent);
+      outline-offset: 2px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      width: 100%;
+    }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--clr-bg);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      border-bottom: 3px solid var(--clr-accent);
+      backdrop-filter: saturate(180%) blur(10px);
+      z-index: 10000;
+    }
+    nav.container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1rem;
+    }
+    .logo {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      cursor: default;
+      user-select: none;
+      flex-shrink: 0;
+    }
+    .logo-kanji {
+      font-family: var(--font-logo-kanji);
+      font-weight: 700;
+      font-size: 2.75rem;
+      line-height: 1;
+      color: var(--clr-accent);
+      letter-spacing: 0.02em;
+      text-shadow: 1px 1px 3px #f9ccd9aa;
+      user-select: text;
+    }
+    .logo-english {
+      margin-top: 0.15rem;
+      font-family: var(--font-logo-english);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--clr-text-primary);
+      letter-spacing: 0.05em;
+      user-select: text;
+    }
+
+    /* Navigation */
+    ul.nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-weight: 700;
+      font-size: 1rem;
+      font-family: var(--font-headline);
+      color: var(--clr-text-primary);
+    }
+    ul.nav-links a {
+      position: relative;
+      padding: 0.25rem 0;
+      transition: color var(--transition-speed), transform var(--transition-speed);
+      color: var(--clr-text-primary);
+      font-weight: 600;
+    }
+    ul.nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -6px;
+      left: 0;
+      background-color: var(--clr-accent);
+      transition: width var(--transition-speed);
+      border-radius: 2px;
+    }
+    ul.nav-links a:hover,
+    ul.nav-links a:focus-visible {
+      color: var(--clr-accent-dark);
+      transform: scale(1.05);
+      outline: none;
+    }
+    ul.nav-links a:hover::after,
+    ul.nav-links a:focus-visible::after {
+      width: 100%;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      padding: 6rem 1rem 6.5rem;
+      text-align: center;
+      font-family: var(--font-headline);
+      color: var(--clr-text-primary);
+      user-select: none;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1553621042-f6e147245754?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.55) saturate(1.2);
+      z-index: -2;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: var(--clr-overlay);
+      mix-blend-mode: multiply;
+      z-index: -1;
+    }
+    .hero h1 {
+      font-weight: 800;
+      font-size: 3.8rem;
+      max-width: 720px;
+      margin: 0 auto;
+      letter-spacing: 0.04em;
+      color: #f9f0f3;
+      text-shadow: 2px 2px 8px rgba(120, 0, 30, 0.6);
+    }
+    .hero p {
+      font-weight: 600;
+      font-size: 1.375rem;
+      max-width: 460px;
+      margin: 1.25rem auto 0;
+      color: #f7e8ec;
+      text-shadow: 1px 1px 6px rgba(100,20,40,0.7);
+    }
+    .hero .cta-btn {
+      margin-top: 3rem;
+      background-color: var(--clr-accent);
+      border: none;
+      color: white;
+      font-weight: 700;
+      font-family: var(--font-headline);
+      font-size: 1.125rem;
+      padding: 0.85rem 2.5rem;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.25s ease;
+      box-shadow: 0 4px 8px rgba(242, 166, 179, 0.5);
+      user-select: none;
+    }
+    .hero .cta-btn:hover,
+    .hero .cta-btn:focus-visible {
+      background-color: var(--clr-accent-dark);
+      transform: scale(1.05);
+      outline: none;
+    }
+
+    /* Our Story */
+    .our-story {
+      background: #fff0f5;
+      border-radius: var(--border-radius);
+      box-shadow: 0 6px 18px rgba(242, 166, 179, 0.3);
+      max-width: var(--max-width);
+      margin: 0 auto 3rem;
+      padding: 4rem 1rem 5rem;
+      text-align: center;
+      font-family: var(--font-body);
+      color: var(--clr-text-primary);
+    }
+    .our-story h2 {
+      font-family: var(--font-headline);
+      font-weight: 800;
+      font-size: 2.75rem;
+      margin-bottom: 1.75rem;
+      color: var(--clr-accent-dark);
+      letter-spacing: 0.03em;
+    }
+    .our-story p {
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 1.125rem;
+      line-height: 1.7;
+    }
+    .our-story strong {
+      color: var(--clr-accent-dark);
+      font-weight: 700;
+    }
+
+    /* Menu Sections */
+    section.menu-section {
+      max-width: var(--max-width);
+      margin: 0 auto 3rem;
+      padding: 0 1rem;
+    }
+    section.menu-section h2 {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: 2.625rem;
+      margin-bottom: 2rem;
+      color: var(--clr-accent);
+      text-align: center;
+      text-shadow: 1px 1px 2px #f9ccd9bb;
+    }
+    .menu-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+      gap: 2rem;
+    }
+    .menu-card {
+      background: #fff4f8;
+      border-radius: var(--border-radius);
+      padding: 1.6rem 1.4rem;
+      box-shadow: 0 2px 8px rgba(242,166,179,0.3);
+      display: flex;
+      flex-direction: column;
+      cursor: default;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .menu-card:hover,
+    .menu-card:focus-within {
+      box-shadow: 0 14px 28px rgba(192,70,89,0.4);
+      transform: translateY(-5px);
+      outline: none;
+      background: #fce4e9;
+    }
+    .menu-card h3 {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--clr-text-primary);
+    }
+    .menu-card p {
+      flex-grow: 1;
+      font-size: 1.025rem;
+      color: var(--clr-text-secondary);
+      margin-bottom: 1.2rem;
+      line-height: 1.5;
+    }
+    .menu-card .price {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--clr-accent-dark);
+      align-self: flex-end;
+      font-family: var(--font-headline);
+      letter-spacing: 0.04em;
+    }
+
+    /* Contact Section with Japanese style */
+    #contact-section {
+      background: #fff0f5;
+      border-radius: var(--border-radius);
+      box-shadow: 0 6px 24px rgba(242, 166, 179, 0.25);
+      max-width: var(--max-width);
+      margin: 0 auto 3rem;
+      padding: 4rem 1rem 6rem;
+      font-family: var(--font-body);
+      color: var(--clr-text-primary);
+      text-align: center;
+    }
+    #contact-section h2 {
+      font-family: var(--font-headline);
+      font-weight: 900;
+      font-size: 2.75rem;
+      margin-bottom: 2rem;
+      color: var(--clr-accent-dark);
+      letter-spacing: 0.05em;
+      user-select: text;
+    }
+    .contact-table {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      border-collapse: separate;
+      border-spacing: 2rem 1rem;
+      table-layout: fixed;
+      background: #fff4f8;
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 24px rgba(191, 38, 0, 0.1);
+      padding: 2rem;
+    }
+    .contact-table caption {
+      text-align: left;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--clr-accent);
+      margin-bottom: 1rem;
+      user-select: text;
+      letter-spacing: 0.04em;
+      font-family: var(--font-logo-kanji);
+    }
+    .contact-table th {
+      font-weight: 700;
+      font-size: 1.25rem;
+      padding-bottom: 0.5rem;
+      color: var(--clr-accent-dark);
+      border-bottom: 1px solid var(--clr-accent);
+      user-select: text;
+    }
+    .contact-table td {
+      font-size: 1.1rem;
+      padding: 0.25rem 0;
+      color: var(--clr-text-primary);
+      user-select: text;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    /* QR Section */
+    .qr-section {
+      background: #fff0f5;
+      border-radius: var(--border-radius);
+      box-shadow: 0 8px 28px rgba(242, 166, 179, 0.45);
+      padding: 2.5rem 2rem 3rem;
+      max-width: 600px;
+      margin: 4rem auto 2rem;
+      text-align: center;
+      border: 2px solid var(--clr-accent);
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      user-select: none;
+      transition: box-shadow 0.3s ease;
+    }
+    .qr-section:hover,
+    .qr-section:focus-within {
+      box-shadow: 0 14px 42px rgba(192, 86, 104, 0.75);
+      outline: none;
+    }
+    .qr-section .text-content {
+      flex: 1;
+      text-align: left;
+    }
+    .qr-section h3 {
+      font-family: var(--font-headline);
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: var(--clr-accent-dark);
+      margin-bottom: 0.8rem;
+      text-shadow: 0 0 6px #f2a6b3cc;
+    }
+    .qr-section p.japanese {
+      font-family: var(--font-qr-jp);
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: var(--clr-accent);
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.03em;
+      filter: drop-shadow(0 0 1px #c05668cc);
+    }
+    .qr-section p.english {
+      font-family: var(--font-qr-en);
+      font-weight: 500;
+      font-size: 1.125rem;
+      color: var(--clr-text-secondary);
+      margin: 0 0 1.5rem;
+      letter-spacing: 0.025em;
+    }
+    .qr-image {
+      width: 190px;
+      height: 190px;
+      border-radius: 1rem;
+      box-shadow:
+        0 0 14px 5px #f2a6b3cc,
+        inset 0 0 20px 3px #c0566811;
+      background-color: white;
+      border: 2px solid var(--clr-accent);
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+    .qr-image:hover,
+    .qr-image:focus-visible {
+      transform: scale(1.1);
+      box-shadow:
+        0 0 26px 8px #c0566855,
+        inset 0 0 25px 5px #c0566833;
+      outline: none;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 4rem;
+      padding: 3rem 1rem 4rem;
+      text-align: center;
+      font-size: 1rem;
+      color: var(--clr-text-secondary);
+      background: #fff0f5;
+      border-top: 3px solid var(--clr-accent);
+      user-select: none;
+      font-family: var(--font-body);
+      font-weight: 400;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.9rem;
+      }
+      section.menu-section h2,
+      .our-story h2,
+      #contact-section h2 {
+        font-size: 2.1rem;
+      }
+      .nav-links {
+        gap: 1rem;
+        font-size: 0.95rem;
+      }
+      .menu-card {
+        padding: 1.2rem 1rem;
+      }
+      .qr-section {
+        flex-direction: column;
+        max-width: 320px;
+        padding: 2rem 1rem;
+      }
+      .qr-section .text-content {
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+      .qr-image {
+        margin: 0 auto;
+      }
+      table.contact-table {
+        display: block;
+        overflow-x: auto;
+        width: 100%;
+      }
+    }
+    @media (max-width: 400px) {
+      .logo-kanji {
+        font-size: 2.3rem;
+      }
+      .logo-english {
+        font-size: 0.9rem;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      section.menu-section h2,
+      .our-story h2,
+      #contact-section h2 {
+        font-size: 1.75rem;
+      }
+      .qr-section {
+        max-width: 280px;
+        padding: 1.5rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav aria-label="Primary Navigation" class="container">
+      <div class="logo" tabindex="0" aria-label="Restaurant logo showing En No Ka in Japanese Kanji and English">
+        <div class="logo-kanji" aria-hidden="true" lang="ja">円の華</div>
+        <div class="logo-english">En No Ka</div>
+      </div>
+      <ul class="nav-links" role="menubar" aria-label="Primary navigation menu">
+        <li role="none"><a href="#" role="menuitem" tabindex="0">Home</a></li>
+        <li role="none"><a href="#appetizer" role="menuitem" tabindex="-1">Menu</a></li>
+        <li role="none"><a href="#our-story" role="menuitem" tabindex="-1">About</a></li>
+        <li role="none"><a href="#contact-section" role="menuitem" tabindex="-1">Contacts</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Hero Section">
+      <h1>En No Ka - Japanese Cuisine</h1>
+      <p>Experience authentic flavors crafted with passion and precision in every dish.</p>
+      <button class="cta-btn" type="button" aria-label="Learn more about our story" onclick="document.getElementById('our-story').scrollIntoView({behavior: 'smooth'})">Learn Our Story</button>
+    </section>
+
+    <section id="our-story" class="our-story" aria-labelledby="our-story-heading">
+      <h2 id="our-story-heading">Our Story</h2>
+      <p>
+        At <strong>En No Ka</strong>, our journey began with a deep love for the artistry and tradition of Japanese cuisine. We strive to bring the <strong>essence of Japan’s rich culinary heritage</strong> to every plate, using only the finest ingredients and crafting each dish with meticulous care. Our mission is to offer an authentic taste experience that evokes the beauty and harmony found in Japanese culture — from the delicate balance of flavors to the mindful presentation. Whether you are savoring our signature dishes or discovering new favorites, <strong>we promise an unforgettable dining experience</strong> that honors the spirit of Japan.
+      </p>
+    </section>
+
+    <section id="appetizer" class="menu-section" aria-labelledby="appetizer-heading">
+      <h2 id="appetizer-heading">Appetizer</h2>
+      <div class="menu-items" role="list">
+        <article class="menu-card" tabindex="0" role="listitem">
+          <h3>Chilled Tofu with Bonito Flakes</h3>
+          <p>Silky smooth tofu topped with savory smoked bonito flakes and a light soy dressing.</p>
+          <div class="price">₱150</div>
+        </article>
+        <article class="menu-card" tabindex="0" role="listitem">
+          <h3>Marinated Octopus with Sesame</h3>
+          <p>Tender octopus marinated in a fragrant blend of sesame oil and spices for a refreshing start.</p>
+          <div class="price">₱200</div>
+        </article>
+        <article class="menu-card" tabindex="0" role="listitem">
+          <h3>Eggplant with Miso Glaze</h3>
+          <p>Roasted eggplant glazed with rich miso sauce, offering umami depth and silky texture.</p>
+          <div class="price">₱650</div>
+        </article>
+        <article class="menu-card" tabindex="0" role="listitem">
+          <h3>Scallop Carpaccio with Yuzu Pepper</h3>
+          <p>Thinly sliced fresh scallops dressed in citrusy yuzu pepper for vibrant flavor balance.</p>
+          <div class="price">₱720</div>
+        </article>
+        <article class="menu-card" tabindex="0" role="listitem">
+          <h3>Ankimo with Ponzu and Momiji Oroshi</h3>
+          <p>Delicate monkfish liver paired with tangy ponzu and spicy grated daikon radish, a delicacy.</p>
+          <div class="price">₱800</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="entree" class="menu-section" aria-labelledby="entree-heading">
+      <h2 id="entree-heading">Entree</h2>
+      <div class="menu-items" role="list">
+        <article class="menu-card" tabindex="0" role="listitem">
+          <h3>Gyu Don with Sous-Vide Wagyu and Onsen Tamago</h3>
+          <p>Succulent wagyu beef cooked sous-vide atop steamed rice, crowned with a soft onsen egg.</p>
+          <div class="price">₱1,500</div>
+        </article>
+        <article class="menu-card" tabindex="0" role="listitem">
+          <h3>Unagi Kabayaki with Kinshi Tamago and Rice</h3>
+          <p>Grilled eel glazed with sweet soy sauce, accompanied by fine shredded egg and fluffy rice.</p>
+          <div class="price">₱1,100</div>
+        </article>
+        <article class="menu-card" tabindex="0" role="listitem">
+          <h3>Chicken Teriyaki with Yuzu-Koshō Glaze and Steamed Rice</h3>
+          <p>Juicy grilled chicken with a zesty yuzu-koshō glaze served beside fragrant steamed rice.</p>
+          <div class="price">₱550</div>
+        </article>
+        <article class="menu-card" tabindex="0" role="listitem">
+          <h3>Sukiyaki</h3>
+          <p>A savory hot pot of thin sliced beef, vegetables, tofu, and noodles simmered in a sweet soy broth.</p>
+          <div class="price">₱700</div>
+        </article>
+        <article class="menu-card" tabindex="0" role="listitem">
+          <h3>Black Cod Saikyo Yaki (Miso-Marinated Black Cod)</h3>
+          <p>Delicate black cod marinated in sweet Saikyo miso, broiled to buttery perfection.</p>
+          <div class="price">₱1,800</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="soups" class="menu-section" aria-labelledby="soups-heading">
+      <h2 id="soups-heading">Soups</h2>
+      <div class="menu-items" role="list">
+        <article class="menu-card" tabindex="0" role="listitem">
+          <h3>Suimono</h3>
+          <p>Clear, delicate broth flavored with seasonal ingredients for a refined start to your meal.</p>
+          <div class="price">₱1,200</div>
+        </article>
+        <article class="menu-card" tabindex="0" role="listitem">
+          <h3>Aka Miso Soup with Clams</h3>
+          <p>Rich red miso soup featuring fresh clams, balanced with a smoky, savory character.</p>
+          <div class="price">₱930</div>
+        </article>
+        <article class="menu-card" tabindex="0" role="listitem">
+          <h3>Kani Miso Soup</h3>
+          <p>Hearty crab-infused miso soup filled with many flavorful umami layers.</p>
+          <div class="price">₱1,200</div>
+        </article>
+        <article class="menu-card" tabindex="0" role="listitem">
+          <h3>White Miso Soup with Grilled Eggplant</h3>
+          <p>Smooth white miso soup complemented by smoky grilled eggplant chunks for depth.</p>
+          <div class="price">₱1,000</div>
+        </article>
+        <article class="menu-card" tabindex="0" role="listitem">
+          <h3>Yuba and Crab Chawanmushi</h3>
+          <p>Steamed savory egg custard enriched with tofu skin (yuba) and succulent crab meat.</p>
+          <div class="price">₱1,100</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="desserts" class="menu-section" aria-labelledby="desserts-heading">
+      <h2 id="desserts-heading">Desserts</h2>
+      <div class="menu-items" role="list">
+        <article class="menu-card" tabindex="0" role="listitem">
+          <h3>Black Sesame Panna Cotta with Yuzu Gelée</h3>
+          <p>Creamy panna cotta infused with nutty black sesame, topped with zesty yuzu jelly.</p>
+          <div class="price">₱500</div>
+        </article>
+        <article class="menu-card" tabindex="0" role="listitem">
+          <h3>Miso Caramel Ice Cream with Sesame Tuile</h3>
+          <p>Rich caramel ice cream with savory miso undertones, garnished with crisp sesame tuile.</p>
+          <div class="price">₱300</div>
+        </article>
+        <article class="menu-card" tabindex="0" role="listitem">
+          <h3>Yuzu and White Chocolate Parfait</h3>
+          <p>Layered parfait combining tangy yuzu and smooth white chocolate decadence.</p>
+          <div class="price">₱800</div>
+        </article>
+        <article class="menu-card" tabindex="0" role="listitem">
+          <h3>Sake Kasu Custard</h3>
+          <p>Silky custard with fragrant sake lees, a traditional Japanese dessert delight.</p>
+          <div class="price">₱280</div>
+        </article>
+        <article class="menu-card" tabindex="0" role="listitem">
+          <h3>Sweet Potato Yokan with Kuromitsu Sauce</h3>
+          <p>Jelly-like sweet potato confection served with rich kuromitsu (black sugar) syrup.</p>
+          <div class="price">₱230</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="beverages" class="menu-section" aria-labelledby="beverages-heading">
+      <h2 id="beverages-heading">Beverages</h2>
+      <div class="menu-items" role="list">
+        <article class="menu-card" tabindex="0" role="listitem">
+          <h3>Yuzu &amp; Honey Juice</h3>
+          <p>Refreshing juice blending fragrant yuzu citrus and natural honey sweetness.</p>
+          <div class="price">₱500</div>
+        </article>
+        <article class="menu-card" tabindex="0" role="listitem">
+          <h3>White Peach &amp; Sakura Juice</h3>
+          <p>Delicate and floral juice combining ripe white peaches and cherry blossoms.</p>
+          <div class="price">₱200</div>
+        </article>
+        <article class="menu-card" tabindex="0" role="listitem">
+          <h3>Cucumber &amp; Ginger Juice</h3>
+          <p>Cool cucumber juice with a subtle spicy kick of fresh ginger.</p>
+          <div class="price">₱170</div>
+        </article>
+        <article class="menu-card" tabindex="0" role="listitem">
+          <h3>Strawberry Ume Juice</h3>
+          <p>Sweet strawberry juice blended with traditional Japanese plum flavor.</p>
+          <div class="price">₱250</div>
+        </article>
+        <article class="menu-card" tabindex="0" role="listitem">
+          <h3>Green Apple &amp; Sencha Juice</h3>
+          <p>Crisp green apple juice infused with light Japanese sencha tea notes.</p>
+          <div class="price">₱190</div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <section id="contact-section" aria-labelledby="contact-heading">
+    <div class="container">
+      <h2 id="contact-heading">Contact &amp; Hours</h2>
+      <table class="contact-table" role="table" aria-describedby="contact-desc" style="width:100%; max-width:900px; margin: 0 auto; border-collapse:separate; border-spacing:2rem 1rem; table-layout:fixed; background:#fff4f8; border-radius: var(--border-radius); box-shadow: 0 4px 24px rgba(191, 38, 0, 0.1); padding: 2rem;">
+        <caption id="contact-desc" style="text-align:left; font-weight:700; font-size:1.5rem; color:var(--clr-accent); margin-bottom:1rem; font-family:var(--font-logo-kanji); user-select:text;">Our Opening Hours and Address</caption>
+        <thead>
+          <tr>
+            <th scope="col" style="text-align:left; font-weight:700; font-size:1.125rem; user-select:text;">Opening Hours</th>
+            <th scope="col" style="text-align:left; font-weight:700; font-size:1.125rem; user-select:text;">Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Monday - Friday<br>11:00 AM - 9:00 PM</td>
+            <td>123 Sakura Lane<br>Kyoto, Japan 600-1234</td>
+          </tr>
+          <tr>
+            <td>Saturday - Sunday<br>12:00 PM - 10:00 PM</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section
+    class="reservation-feedback"
+    aria-labelledby="reservation-feedback-heading"
+    style="max-width: 600px; margin: 3rem auto 3rem; background: #fff0f5; border-radius: 0.75rem; padding: 2.5rem 2rem; box-shadow: 0 6px 18px rgba(242, 166, 179, 0.3); user-select: none;"
+  >
+    <h2
+      id="reservation-feedback-heading"
+      style="font-family: var(--font-headline); font-weight: 800; font-size: 2.25rem; color: var(--clr-accent-dark); text-align: center; margin-bottom: 1.5rem;"
+    >
+      Reservation &amp; Feedback
+    </h2>
+    <form
+      id="reservation-form"
+      novalidate
+      style="display: flex; flex-direction: column; gap: 1.25rem; font-family: var(--font-body); color: var(--clr-text-primary); font-size: 1rem;"
+    >
+      <label for="name" style="display: flex; flex-direction: column; font-weight: 600;">
+        Name
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          placeholder="Your full name"
+          style="margin-top: 0.3rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 0.5rem; transition: border-color 0.3s;"
+        />
+      </label>
+
+      <label for="email" style="display: flex; flex-direction: column; font-weight: 600;">
+        Email
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          placeholder="you@example.com"
+          style="margin-top: 0.3rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 0.5rem; transition: border-color 0.3s;"
+        />
+      </label>
+
+      <label for="phone" style="display: flex; flex-direction: column; font-weight: 600;">
+        Phone Number
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          pattern="\\+?\\d{0,15}"
+          placeholder="+1 234 567 890"
+          style="margin-top: 0.3rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 0.5rem; transition: border-color 0.3s;"
+        />
+      </label>
+
+      <label for="date" style="display: flex; flex-direction: column; font-weight: 600;">
+        Reservation Date
+        <input
+          type="date"
+          id="date"
+          name="date"
+          required
+          style="margin-top: 0.3rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 0.5rem; transition: border-color 0.3s;"
+        />
+      </label>
+
+      <label for="time" style="display: flex; flex-direction: column; font-weight: 600;">
+        Reservation Time
+        <input
+          type="time"
+          id="time"
+          name="time"
+          required
+          style="margin-top: 0.3rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 0.5rem; transition: border-color 0.3s;"
+        />
+      </label>
+
+      <label for="guests" style="display: flex; flex-direction: column; font-weight: 600;">
+        Number of Guests
+        <input
+          type="number"
+          id="guests"
+          name="guests"
+          min="1"
+          max="20"
+          required
+          placeholder="1"
+          style="margin-top: 0.3rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 0.5rem; transition: border-color 0.3s;"
+        />
+      </label>
+
+      <label for="feedback" style="display: flex; flex-direction: column; font-weight: 600;">
+        Feedback (Optional)
+        <textarea
+          id="feedback"
+          name="feedback"
+          rows="4"
+          placeholder="Any comments or requests?"
+          style="margin-top: 0.3rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 0.5rem; transition: border-color 0.3s; resize: vertical;"
+        ></textarea>
+      </label>
+
+      <button
+        type="submit"
+        style="background-color: var(--clr-accent); color: white; font-weight: 700; font-family: var(--font-headline); font-size: 1.125rem; padding: 0.85rem 2.5rem; border: none; border-radius: var(--border-radius); cursor: pointer; transition: background-color 0.3s ease, transform 0.25s ease; box-shadow: 0 4px 8px rgba(242, 166, 179, 0.5);"
+      >
+        Submit Reservation
+      </button>
+      <p id="form-message" role="alert" aria-live="polite" style="margin-top:1rem; font-weight:600; color: var(--clr-accent-dark); min-height: 1.2em;"></p>
+    </form>
+  </section>
+
+  <section class="qr-section" aria-labelledby="qr-heading" tabindex="0" style="margin-bottom: 4rem; max-width: 600px; margin-left: auto; margin-right: auto; border: 2px solid var(--clr-accent); background:#fff0f5; border-radius:0.75rem; box-shadow: 0 8px 28px rgba(242, 166, 179, 0.45); display:flex; gap:2rem; align-items:center; padding: 2.5rem 2rem;">
+    <div class="text-content" style="flex:1; text-align:left;">
+      <h3 id="qr-heading" style="font-family: var(--font-headline); font-weight: 800; font-size: 1.8rem; color: var(--clr-accent-dark); margin-bottom: 0.8rem; text-shadow:0 0 6px #f2a6b3cc;">QRコード (QR Code)</h3>
+      <p class="japanese" lang="ja" style="font-family: var(--font-qr-jp); font-weight: 600; font-size: 1.5rem; color: var(--clr-accent); margin-bottom: 0.3rem; letter-spacing: 0.03em; filter: drop-shadow(0 0 1px #c05668cc);">こちらのQRコードをスキャンして、当店のウェブサイトへアクセスください。</p>
+      <p class="english" style="font-family: var(--font-qr-en); font-weight: 500; font-size: 1.125rem; color: var(--clr-text-secondary); margin: 0 0 1.5rem; letter-spacing: 0.025em;">Scan this QR code to visit our website.</p>
+    </div>
+    <img
+      class="qr-image"
+      src="https://api.qrserver.com/v1/create-qr-code/?size=190x190&data=https%3A%2F%2Fyour-restaurant-website-url.example"
+      alt="QR code linking to En No Ka Japanese Cuisine website"
+      tabindex="0"
+      style="width:190px; height:190px; border-radius:1rem; box-shadow: 0 0 14px 5px #f2a6b3cc, inset 0 0 20px 3px #c0566811; background-color: white; border: 2px solid var(--clr-accent); cursor: pointer; flex-shrink: 0; transition: transform 0.3s ease;"
+      onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 0 26px 8px #c0566855, inset 0 0 25px 5px #c0566833';"
+      onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 14px 5px #f2a6b3cc, inset 0 0 20px 3px #c0566811';"
+    />
+  </section>
+
+  <footer style="margin-top: 4rem; padding: 3rem 1rem 4rem; text-align: center; font-size: 1rem; color: var(--clr-text-secondary); background: #fff0f5; border-top: 3px solid var(--clr-accent); user-select: none; font-family: var(--font-body); font-weight: 400;">
+    &copy; 2024 En No Ka - Japanese Cuisine. All rights reserved.
+  </footer>
+
+  <script>
+    const form = document.getElementById('reservation-form');
+    const messageEl = document.getElementById('form-message');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      messageEl.textContent = '';
+
+      if (!form.checkValidity()) {
+        messageEl.textContent = 'Please fill out all required fields correctly.';
+        return;
+      }
+
+      const reservationData = {
+        name: form.name.value.trim(),
+        email: form.email.value.trim(),
+        phone: form.phone.value.trim(),
+        date: form.date.value,
+        time: form.time.value,
+        guests: form.guests.value,
+        feedback: form.feedback.value.trim()
+      };
+
+      try {
+        let saved = JSON.parse(localStorage.getItem('enNoKaReservations')) || [];
+        saved.push(reservationData);
+        localStorage.setItem('enNoKaReservations', JSON.stringify(saved));
+
+        messageEl.style.color = 'green';
+        messageEl.textContent = 'Thank you! Your reservation request has been received.';
+        form.reset();
+      } catch (err) {
+        messageEl.style.color = 'red';
+        messageEl.textContent = 'Sorry, something went wrong. Please try again later.';
+      }
+    });
+  </script>
+</body>
+</html>
