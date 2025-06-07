@@ -57,10 +57,8 @@
 
     .container {
       max-width: var(--max-width);
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: 1rem;
-      padding-right: 1rem;
+      margin: 0 auto;
+      padding: 0 1rem;
       width: 100%;
     }
 
@@ -92,11 +90,10 @@
       font-family: var(--font-logo-kanji);
       font-weight: 700;
       font-size: 2.75rem;
-      line-height: 1;
       color: var(--clr-accent);
       letter-spacing: 0.02em;
       text-shadow: 1px 1px 3px #f9ccd9aa;
-      user-select: text;
+      line-height: 1;
     }
     .logo-english {
       margin-top: 0.15rem;
@@ -105,7 +102,6 @@
       font-size: 1rem;
       color: var(--clr-text-primary);
       letter-spacing: 0.05em;
-      user-select: text;
     }
     ul.nav-links {
       display: flex;
@@ -335,8 +331,8 @@
     #contact-section h2 {
       font-family: var(--font-headline);
       font-weight: 900;
-      font-size: 2.75rem;
-      margin-bottom: 2.5rem;
+      font-size: 2.25rem;
+      margin-bottom: 2rem;
       color: var(--clr-accent-dark);
       letter-spacing: 0.05em;
       position: relative;
@@ -351,7 +347,7 @@
       table-layout: fixed;
       background: #fff4f8;
       border-radius: var(--border-radius);
-      box-shadow: 0 4px 28px rgba(191, 38, 0, 0.1);
+      box-shadow: 0 4px 24px rgba(191, 38, 0, 0.1);
       padding: 2rem;
       text-align: left;
       position: relative;
@@ -370,16 +366,16 @@
     }
     table.contact-table th {
       font-weight: 700;
-      font-size: 1.25rem;
+      font-size: 1.1rem;
       color: var(--clr-accent-dark);
       padding-bottom: 0.5rem;
       border-bottom: 1px solid var(--clr-accent);
       user-select: text;
     }
     table.contact-table td {
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: var(--clr-text-primary);
-      line-height: 1.6;
+      line-height: 1.5;
       vertical-align: top;
       user-select: text;
       padding-top: 0.2rem;
@@ -457,7 +453,6 @@
       outline: none;
     }
 
-    /* Footer */
     footer {
       margin-top: 4rem;
       padding: 3rem 1rem 4rem;
@@ -529,7 +524,6 @@
   </style>
 </head>
 <body>
-  <!-- header -->
   <header>
     <nav aria-label="Primary Navigation" class="container">
       <div class="logo" tabindex="0" aria-label="Restaurant logo showing En No Ka in Japanese Kanji and English">
@@ -545,7 +539,6 @@
     </nav>
   </header>
 
-  <!-- main -->
   <main>
     <section class="hero" aria-label="Hero Section">
       <h1>En No Ka - Japanese Cuisine</h1>
@@ -558,33 +551,30 @@
       <p>At <strong>En No Ka</strong>, our journey began with a deep love for the artistry and tradition of Japanese cuisine. We strive to bring the <strong>essence of Japan’s rich culinary heritage</strong> to every plate, using only the finest ingredients and crafting each dish with meticulous care. Our mission is to offer an authentic taste experience that evokes the beauty and harmony found in Japanese culture – from the delicate balance of flavors to the mindful presentation. Whether you are savoring our signature dishes or discovering new favorites, <strong>we promise an unforgettable dining experience</strong> that honors the spirit of Japan.</p>
     </section>
 
-    <!-- Menu Sections -->
-
-    <!-- Appetizer -->
     <section id="appetizer" class="menu-section" aria-labelledby="appetizer-heading">
       <h2 id="appetizer-heading">Appetizer</h2>
-      <div class="menu-items">
-        <article class="menu-card" tabindex="0">
+      <div class="menu-items" role="list">
+        <article class="menu-card" role="listitem" tabindex="0">
           <h3>Chilled Tofu with Bonito Flakes</h3>
           <p>Silky smooth tofu topped with savory smoked bonito flakes and a light soy dressing.</p>
           <div class="price">₱150</div>
         </article>
-        <article class="menu-card" tabindex="0">
+        <article class="menu-card" role="listitem" tabindex="0">
           <h3>Marinated Octopus with Sesame</h3>
           <p>Tender octopus marinated in a fragrant blend of sesame oil and spices for a refreshing start.</p>
           <div class="price">₱200</div>
         </article>
-        <article class="menu-card" tabindex="0">
+        <article class="menu-card" role="listitem" tabindex="0">
           <h3>Eggplant with Miso Glaze</h3>
           <p>Roasted eggplant glazed with rich miso sauce, offering umami depth and silky texture.</p>
           <div class="price">₱650</div>
         </article>
-        <article class="menu-card" tabindex="0">
+        <article class="menu-card" role="listitem" tabindex="0">
           <h3>Scallop Carpaccio with Yuzu Pepper</h3>
           <p>Thinly sliced fresh scallops dressed in citrusy yuzu pepper for vibrant flavor balance.</p>
           <div class="price">₱720</div>
         </article>
-        <article class="menu-card" tabindex="0">
+        <article class="menu-card" role="listitem" tabindex="0">
           <h3>Ankimo with Ponzu and Momiji Oroshi</h3>
           <p>Delicate monkfish liver paired with tangy ponzu and spicy grated daikon radish, a delicacy.</p>
           <div class="price">₱800</div>
@@ -592,31 +582,30 @@
       </div>
     </section>
 
-    <!-- Entree -->
     <section id="entree" class="menu-section" aria-labelledby="entree-heading">
       <h2 id="entree-heading">Entree</h2>
-      <div class="menu-items">
-        <article class="menu-card" tabindex="0">
+      <div class="menu-items" role="list">
+        <article class="menu-card" role="listitem" tabindex="0">
           <h3>Gyu Don with Sous-Vide Wagyu and Onsen Tamago</h3>
-          <p>Succulent wagyu beef cooked sous-vide atop steamed rice, topped with a soft onsen egg.</p>
+          <p>Succulent wagyu beef cooked sous-vide atop steamed rice, crowned with a soft onsen egg.</p>
           <div class="price">₱1,500</div>
         </article>
-        <article class="menu-card" tabindex="0">
+        <article class="menu-card" role="listitem" tabindex="0">
           <h3>Unagi Kabayaki with Kinshi Tamago and Rice</h3>
           <p>Grilled eel glazed with sweet soy sauce, accompanied by fine shredded egg and fluffy rice.</p>
           <div class="price">₱1,100</div>
         </article>
-        <article class="menu-card" tabindex="0">
+        <article class="menu-card" role="listitem" tabindex="0">
           <h3>Chicken Teriyaki with Yuzu-Koshō Glaze and Steamed Rice</h3>
           <p>Juicy grilled chicken with a zesty yuzu-koshō glaze served beside fragrant steamed rice.</p>
           <div class="price">₱550</div>
         </article>
-        <article class="menu-card" tabindex="0">
+        <article class="menu-card" role="listitem" tabindex="0">
           <h3>Sukiyaki</h3>
           <p>A savory hot pot of thin sliced beef, vegetables, tofu, and noodles simmered in a sweet soy broth.</p>
           <div class="price">₱700</div>
         </article>
-        <article class="menu-card" tabindex="0">
+        <article class="menu-card" role="listitem" tabindex="0">
           <h3>Black Cod Saikyo Yaki (Miso-Marinated Black Cod)</h3>
           <p>Delicate black cod marinated in sweet Saikyo miso, broiled to buttery perfection.</p>
           <div class="price">₱1,800</div>
@@ -624,31 +613,30 @@
       </div>
     </section>
 
-    <!-- Soups -->
     <section id="soups" class="menu-section" aria-labelledby="soups-heading">
       <h2 id="soups-heading">Soups</h2>
-      <div class="menu-items">
-        <article class="menu-card" tabindex="0">
+      <div class="menu-items" role="list">
+        <article class="menu-card" role="listitem" tabindex="0">
           <h3>Suimono</h3>
           <p>Clear, delicate broth flavored with seasonal ingredients for a refined start to your meal.</p>
           <div class="price">₱1,200</div>
         </article>
-        <article class="menu-card" tabindex="0">
+        <article class="menu-card" role="listitem" tabindex="0">
           <h3>Aka Miso Soup with Clams</h3>
           <p>Rich red miso soup featuring fresh clams, balanced with a smoky, savory character.</p>
           <div class="price">₱930</div>
         </article>
-        <article class="menu-card" tabindex="0">
+        <article class="menu-card" role="listitem" tabindex="0">
           <h3>Kani Miso Soup</h3>
           <p>Hearty crab-infused miso soup filled with many flavorful umami layers.</p>
           <div class="price">₱1,200</div>
         </article>
-        <article class="menu-card" tabindex="0">
+        <article class="menu-card" role="listitem" tabindex="0">
           <h3>White Miso Soup with Grilled Eggplant</h3>
           <p>Smooth white miso soup complemented by smoky grilled eggplant chunks for depth.</p>
           <div class="price">₱1,000</div>
         </article>
-        <article class="menu-card" tabindex="0">
+        <article class="menu-card" role="listitem" tabindex="0">
           <h3>Yuba and Crab Chawanmushi</h3>
           <p>Steamed savory egg custard enriched with tofu skin (yuba) and succulent crab meat.</p>
           <div class="price">₱1,100</div>
@@ -656,31 +644,30 @@
       </div>
     </section>
 
-    <!-- Desserts -->
     <section id="desserts" class="menu-section" aria-labelledby="desserts-heading">
       <h2 id="desserts-heading">Desserts</h2>
-      <div class="menu-items">
-        <article class="menu-card" tabindex="0">
+      <div class="menu-items" role="list">
+        <article class="menu-card" role="listitem" tabindex="0">
           <h3>Black Sesame Panna Cotta with Yuzu Gelée</h3>
           <p>Creamy panna cotta infused with nutty black sesame, topped with zesty yuzu jelly.</p>
           <div class="price">₱500</div>
         </article>
-        <article class="menu-card" tabindex="0">
+        <article class="menu-card" role="listitem" tabindex="0">
           <h3>Miso Caramel Ice Cream with Sesame Tuile</h3>
           <p>Rich caramel ice cream with savory miso undertones, garnished with crisp sesame tuile.</p>
           <div class="price">₱300</div>
         </article>
-        <article class="menu-card" tabindex="0">
+        <article class="menu-card" role="listitem" tabindex="0">
           <h3>Yuzu and White Chocolate Parfait</h3>
           <p>Layered parfait combining tangy yuzu and smooth white chocolate decadence.</p>
           <div class="price">₱800</div>
         </article>
-        <article class="menu-card" tabindex="0">
+        <article class="menu-card" role="listitem" tabindex="0">
           <h3>Sake Kasu Custard</h3>
           <p>Silky custard with fragrant sake lees, a traditional Japanese dessert delight.</p>
           <div class="price">₱280</div>
         </article>
-        <article class="menu-card" tabindex="0">
+        <article class="menu-card" role="listitem" tabindex="0">
           <h3>Sweet Potato Yokan with Kuromitsu Sauce</h3>
           <p>Jelly-like sweet potato confection served with rich kuromitsu (black sugar) syrup.</p>
           <div class="price">₱230</div>
@@ -688,31 +675,30 @@
       </div>
     </section>
 
-    <!-- Beverages -->
     <section id="beverages" class="menu-section" aria-labelledby="beverages-heading">
       <h2 id="beverages-heading">Beverages</h2>
-      <div class="menu-items">
-        <article class="menu-card" tabindex="0">
+      <div class="menu-items" role="list">
+        <article class="menu-card" role="listitem" tabindex="0">
           <h3>Yuzu &amp; Honey Juice</h3>
           <p>Refreshing juice blending fragrant yuzu citrus and natural honey sweetness.</p>
           <div class="price">₱500</div>
         </article>
-        <article class="menu-card" tabindex="0">
+        <article class="menu-card" role="listitem" tabindex="0">
           <h3>White Peach &amp; Sakura Juice</h3>
           <p>Delicate and floral juice combining ripe white peaches and cherry blossoms.</p>
           <div class="price">₱200</div>
         </article>
-        <article class="menu-card" tabindex="0">
+        <article class="menu-card" role="listitem" tabindex="0">
           <h3>Cucumber &amp; Ginger Juice</h3>
           <p>Cool cucumber juice with a subtle spicy kick of fresh ginger.</p>
           <div class="price">₱170</div>
         </article>
-        <article class="menu-card" tabindex="0">
+        <article class="menu-card" role="listitem" tabindex="0">
           <h3>Strawberry Ume Juice</h3>
           <p>Sweet strawberry juice blended with traditional Japanese plum flavor.</p>
           <div class="price">₱250</div>
         </article>
-        <article class="menu-card" tabindex="0">
+        <article class="menu-card" role="listitem" tabindex="0">
           <h3>Green Apple &amp; Sencha Juice</h3>
           <p>Crisp green apple juice infused with light Japanese sencha tea notes.</p>
           <div class="price">₱190</div>
@@ -724,12 +710,12 @@
   <section id="contact-section" aria-labelledby="contact-heading">
     <div class="container">
       <h2 id="contact-heading">Contact &amp; Hours</h2>
-      <table class="contact-table" role="table" aria-describedby="contact-desc" style="width:100%; max-width:900px; margin: 0 auto; border-collapse:separate; border-spacing:2rem 1rem; table-layout:fixed; background:#fff4f8; border-radius: var(--border-radius); box-shadow: 0 4px 24px rgba(191, 38, 0, 0.1); padding: 2rem;">
+      <table class="contact-table" role="table" aria-describedby="contact-desc" style="width:100%; max-width:900px; margin: 0 auto; border-collapse:separate; border-spacing:2rem 1rem; table-layout:fixed; background:#fff4f8; border-radius: var(--border-radius); box-shadow: 0 4px 24px rgba(191, 38, 0, 0.1); padding: 2rem; text-align: left; position: relative; z-index: 1;">
         <caption id="contact-desc" style="text-align:left; font-weight:700; font-size:1.5rem; color:var(--clr-accent); margin-bottom:1rem; font-family:var(--font-logo-kanji);">Our Opening Hours and Address</caption>
         <thead>
           <tr>
-            <th scope="col" style="text-align:left; font-weight:700; font-size:1.125rem;">Opening Hours</th>
-            <th scope="col" style="text-align:left; font-weight:700; font-size:1.125rem;">Address</th>
+            <th scope="col" style="font-weight:700; font-size:1.125rem; color:var(--clr-accent-dark); user-select:text;">Opening Hours</th>
+            <th scope="col" style="font-weight:700; font-size:1.125rem; color:var(--clr-accent-dark); user-select:text;">Address</th>
           </tr>
         </thead>
         <tbody>
@@ -746,109 +732,38 @@
     </div>
   </section>
 
-  <section
-    class="reservation-feedback"
-    aria-labelledby="reservation-feedback-heading"
-    style="max-width: 600px; margin: 3rem auto 3rem; background: #fff0f5; border-radius: 0.75rem; padding: 2.5rem 2rem; box-shadow: 0 6px 18px rgba(242, 166, 179, 0.3);"
-  >
-    <h2
-      id="reservation-feedback-heading"
-      style="font-family: var(--font-headline); font-weight: 800; font-size: 2.25rem; color: var(--clr-accent-dark); text-align: center; margin-bottom: 1.5rem;"
-    >
-      Reservation &amp; Feedback
-    </h2>
-    <form
-      id="reservation-form"
-      novalidate
-      style="display: flex; flex-direction: column; gap: 1.25rem; font-family: var(--font-body); color: var(--clr-text-primary); font-size: 1rem;"
-    >
+  <section class="reservation-feedback" aria-labelledby="reservation-feedback-heading" style="max-width:600px; margin:3rem auto; background:#fff0f5; border-radius:0.75rem; padding:2.5rem 2rem; box-shadow: 0 6px 18px rgba(242, 166, 179, 0.3); user-select: none;">
+    <h2 id="reservation-feedback-heading" style="font-family: var(--font-headline); font-weight: 800; font-size: 2.25rem; color: var(--clr-accent-dark); text-align: center; margin-bottom: 1.5rem;">Reservation &amp; Feedback</h2>
+    <form id="reservation-form" novalidate style="display: flex; flex-direction: column; gap: 1.25rem; font-family: var(--font-body); color: var(--clr-text-primary); font-size: 1rem;">
       <label for="name" style="display: flex; flex-direction: column; font-weight: 600;">
         Name
-        <input
-          type="text"
-          id="name"
-          name="name"
-          required
-          placeholder="Your full name"
-          style="margin-top: 0.3rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 0.5rem; transition: border-color 0.3s;"
-        />
+        <input type="text" id="name" name="name" required placeholder="Your full name" style="margin-top:0.3rem;padding:0.5rem;font-size:1rem;border:1px solid #ccc;border-radius:0.5rem;" />
       </label>
-
       <label for="email" style="display: flex; flex-direction: column; font-weight: 600;">
         Email
-        <input
-          type="email"
-          id="email"
-          name="email"
-          required
-          placeholder="you@example.com"
-          style="margin-top: 0.3rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 0.5rem; transition: border-color 0.3s;"
-        />
+        <input type="email" id="email" name="email" required placeholder="you@example.com" style="margin-top:0.3rem;padding:0.5rem;font-size:1rem;border:1px solid #ccc;border-radius:0.5rem;" />
       </label>
-
       <label for="phone" style="display: flex; flex-direction: column; font-weight: 600;">
         Phone Number
-        <input
-          type="tel"
-          id="phone"
-          name="phone"
-          pattern="\\+?\\d{0,15}"
-          placeholder="+1 234 567 890"
-          style="margin-top: 0.3rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 0.5rem; transition: border-color 0.3s;"
-        />
+        <input type="tel" id="phone" name="phone" pattern="\\+?\\d{0,15}" placeholder="+1 234 567 890" style="margin-top:0.3rem;padding:0.5rem;font-size:1rem;border:1px solid #ccc;border-radius:0.5rem;" />
       </label>
-
       <label for="date" style="display: flex; flex-direction: column; font-weight: 600;">
         Reservation Date
-        <input
-          type="date"
-          id="date"
-          name="date"
-          required
-          style="margin-top: 0.3rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 0.5rem; transition: border-color 0.3s;"
-        />
+        <input type="date" id="date" name="date" required style="margin-top:0.3rem;padding:0.5rem;font-size:1rem;border:1px solid #ccc;border-radius:0.5rem;" />
       </label>
-
       <label for="time" style="display: flex; flex-direction: column; font-weight: 600;">
         Reservation Time
-        <input
-          type="time"
-          id="time"
-          name="time"
-          required
-          style="margin-top: 0.3rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 0.5rem; transition: border-color 0.3s;"
-        />
+        <input type="time" id="time" name="time" required style="margin-top:0.3rem;padding:0.5rem;font-size:1rem;border:1px solid #ccc;border-radius:0.5rem;" />
       </label>
-
       <label for="guests" style="display: flex; flex-direction: column; font-weight: 600;">
         Number of Guests
-        <input
-          type="number"
-          id="guests"
-          name="guests"
-          min="1"
-          max="20"
-          required
-          placeholder="1"
-          style="margin-top: 0.3rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 0.5rem; transition: border-color 0.3s;"
-        />
+        <input type="number" id="guests" name="guests" min="1" max="20" required placeholder="1" style="margin-top:0.3rem;padding:0.5rem;font-size:1rem;border:1px solid #ccc;border-radius:0.5rem;" />
       </label>
-
       <label for="feedback" style="display: flex; flex-direction: column; font-weight: 600;">
         Feedback (Optional)
-        <textarea
-          id="feedback"
-          name="feedback"
-          rows="4"
-          placeholder="Any comments or requests?"
-          style="margin-top: 0.3rem; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 0.5rem; transition: border-color 0.3s; resize: vertical;"
-        ></textarea>
+        <textarea id="feedback" name="feedback" rows="4" placeholder="Any comments or requests?" style="margin-top:0.3rem;padding:0.5rem;font-size:1rem;border:1px solid #ccc;border-radius:0.5rem;resize:vertical;"></textarea>
       </label>
-
-      <button
-        type="submit"
-        style="background-color: var(--clr-accent); color: white; font-weight: 700; font-family: var(--font-headline); font-size: 1.125rem; padding: 0.85rem 2.5rem; border: none; border-radius: var(--border-radius); cursor: pointer; transition: background-color 0.3s ease, transform 0.25s ease;"
-      >
+      <button type="submit" style="background-color: var(--clr-accent); color: white; font-weight:700; font-family: var(--font-headline); font-size:1.125rem; padding:0.85rem 2.5rem; border:none; border-radius: var(--border-radius); cursor:pointer; transition: background-color 0.3s ease, transform 0.25s ease;">
         Submit Reservation
       </button>
       <p id="form-message" role="alert" aria-live="polite" style="margin-top:1rem; font-weight:600; color: var(--clr-accent-dark); min-height: 1.2em;"></p>
